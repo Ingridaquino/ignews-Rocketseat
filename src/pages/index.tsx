@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 
 import Head from 'next/head';
 
@@ -30,7 +30,7 @@ export default function Home({ product }: HomeProps) {
             Get access to all the publications <br />
             <span>for {product.amount} month</span>
           </p>
-          <SubscribeButton />
+          <SubscribeButton priceId={product.priceId}/>
         </section>
         <img src='/images/avatar.svg' alt='Girl coding' />
       </main>  
@@ -39,19 +39,22 @@ export default function Home({ product }: HomeProps) {
 }
 
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const price = await stripe.prices.retrieve('price_1KWNx6EonhYPpHxwtzaLMSig', {
-    expand: ['product']
-  })
+export const getStaticProps: GetStaticProps = async () => {
+  const price = await stripe.prices.retrieve('price_1KWNx6EonhYPpHxwtzaLMSig')
 
   const product = {
     priceId: price.id,
-    amount: (price.unit_amount / 100), 
+    amount: new Intl.NumberFormat('en-US',{
+      style: 'currency',
+      currency: 'USD'
+    }).format(price.unit_amount / 100),
   };
 
   return {
     props:{
       product,
-    }
+    },
+
+    revalidate: 60 * 60 * 24, // 24 horas para carrega a página e para verificar se à alterações no html
   }
 }
