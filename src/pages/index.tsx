@@ -14,7 +14,7 @@ interface HomeProps {
   }
 }
 
-export default function Home({ product }) {
+export default function Home({ product }: HomeProps) {
   return (
     <>
       <Head>
@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const product = {
     priceId: price.id,
-    amount: price.unit_amount / 100, 
+    amount: (price.unit_amount / 100), 
   };
 
   return {
