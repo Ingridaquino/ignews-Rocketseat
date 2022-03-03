@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse} from 'next';
 
 export default (request: NextApiRequest, response: NextApiResponse ) => {
+    const id = request.query
+    
     const users = [
         {id: 1, name: 'Diego'},
         {id: 2, name: 'Daylo'},
@@ -10,5 +12,3 @@ export default (request: NextApiRequest, response: NextApiResponse ) => {
 
     return response.json(users)
 };
-
-//Serverless

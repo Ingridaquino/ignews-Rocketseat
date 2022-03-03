@@ -9,3 +9,5 @@ export const stripe = new Stripe(
     version: '0.1.0',
   },
 })
+
+// Para conseguir ter acesso ao valor 9,90
