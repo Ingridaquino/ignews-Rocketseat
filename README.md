@@ -4,7 +4,8 @@
 
 - O projeto ig.news é um blog onde os usuários podem acessar o conteúdo de cada post de acordo com seu status de assinatura. Projeto desenvolvido durante o segundo módulo Bootcamp Ignite | [@Rocketseat](https://app.rocketseat.com.br/)
 
-``
+---
+
 
 <p align="center">
   <img src="./public/images/avatar.svg" />
@@ -25,6 +26,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - Stripe
 - FaunaDB
 - Axios
+
+---
 
 
 #### 🧭 Rodando a aplicação web (Frontend)
