@@ -1,15 +1,21 @@
 <h1 align="center">
    📰  Ignews
-
- <span> O projeto ig.news é um blog onde os usuários podem acessar o conteúdo de cada post de acordo com seu status de assinatura. Projeto desenvolvido durante o segundo módulo Bootcamp Ignite | [@Rocketseat](https://app.rocketseat.com.br/) </span>
-
 </h1>
 
-<img align="center" href="./public/images/avatar.svg">
+- O projeto ig.news é um blog onde os usuários podem acessar o conteúdo de cada post de acordo com seu status de assinatura. Projeto desenvolvido durante o segundo módulo Bootcamp Ignite | [@Rocketseat](https://app.rocketseat.com.br/)
+
+``
+
+<p align="center">
+  <img src="./public/images/avatar.svg" />
+</p>
+
 
 ---
 
-### Tecnologias Usadas
+### 👷‍♀️ Tecnologias 
+
+As seguintes ferramentas foram usadas na construção do projeto:
 
 - Typescript
 - Next.js
