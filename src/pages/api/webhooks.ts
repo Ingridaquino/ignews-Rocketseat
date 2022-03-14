@@ -20,21 +20,31 @@ export const config = {
     }
 }
 
+const relevantEvents = new Set([
+    'checkout.session.completed'
+])
 
 export  default async (req: NextApiRequest, res:NextApiResponse) => {
     if (req.method === 'POST'){
         const buf = await buffer(req)
         const secret = req.headers['stripe-signature']
 
-        let event: Stripe.EventsResource;
+        let event: Stripe.Event;
 
         try {
             event = stripe.webhooks.construcEvent(buf, secret, process.env.STRIPE_WEBHOOK_SECRET);
         } catch (err) {
-            return res.status(400).send(`Webhook error : ${err.massage}`)
+            return res.status(400).send(`Webhook error : ${err.massage}`);
+        }
+
+        const { type } = event;
+
+        if(!relevantEvents.has(type)) {
+            // fazer algo
+            console.log('Evento recebido', event)
         }
     
-        res.status(200).json({ok: true})
+        res.status(200).json({received: true})
     }else {
         res.setHeader('Allow', 'POST')
         res.status(405).end('Method not allowed')
